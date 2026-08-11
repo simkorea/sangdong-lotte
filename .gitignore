@@ -1,0 +1,9 @@
+node_modules/
+package.json
+package-lock.json
+_raw/
+shots/
+serve.mjs
+shot.mjs
+shot*.png
+.env*
