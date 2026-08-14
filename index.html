@@ -550,6 +550,98 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
   .hero-bg img,.hero-eb,.hero h1 span,.hero-sub,.hero-stats,.hero-cta,.hero-note,.hero-line{opacity:1;animation:none;transform:none}
   .hero-line{height:clamp(120px,22vh,240px)}
 }
+
+/* ══════════ 평면 · 단지 · 갤러리 ══════════ */
+.utabs{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:clamp(24px,3vw,38px)}
+.utab{padding:11px 19px;border:1px solid var(--rule);background:#fff;cursor:pointer;
+  font-family:'Pretendard Variable',Pretendard,sans-serif;font-size:14px;font-weight:700;
+  letter-spacing:-.01em;color:var(--text-2);
+  transition:background-color .22s var(--ease),color .22s var(--ease),border-color .22s var(--ease);}
+.utab:hover{border-color:var(--ink);color:var(--ink)}
+.utab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.upanel{display:none;margin-top:clamp(22px,3vw,34px)}
+.upanel.on{display:grid;gap:clamp(22px,3vw,38px);animation:uF .45s var(--ease) both}
+@media(min-width:900px){.upanel.on{grid-template-columns:1.35fr .65fr;align-items:start}}
+@keyframes uF{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.uimg{border:1px solid var(--rule);background:#fff;padding:clamp(10px,2vw,20px);cursor:zoom-in}
+.uimg img{width:100%;display:block}
+.uspec{border:1px solid var(--rule);background:#fff}
+.uspec h3{padding:18px 20px 0;font-size:22px;font-weight:800;letter-spacing:-.035em}
+.uspec .sub{padding:6px 20px 0;font-size:13px;color:var(--gold-dp);font-weight:700}
+.uspec dl{margin:16px 0 0;padding:0 20px 20px}
+.uspec div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--rule)}
+.uspec dt{font-size:13.5px;color:var(--text-2)}
+.uspec dd{margin:0;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+
+.plan-fig{border:1px solid var(--rule);background:#fff;margin-top:clamp(22px,3vw,34px)}
+.plan-fig img{width:100%;display:block;cursor:zoom-in}
+.plan-fig figcaption{padding:13px 16px;font-size:12.5px;color:var(--text-2);border-top:1px solid var(--rule)}
+.zoomhint{display:inline-block;margin-left:8px;padding:2px 8px;background:var(--stone-2);color:var(--ink);font-size:11px;font-weight:700}
+
+.eyegrid{display:grid;gap:12px;grid-template-columns:1fr;margin-top:clamp(22px,3vw,34px)}
+@media(min-width:700px){.eyegrid{grid-template-columns:repeat(2,1fr)}}
+.eyegrid figure{overflow:hidden;background:var(--stone-2);cursor:zoom-in}
+.eyegrid img{width:100%;aspect-ratio:1160/640;object-fit:cover;transition:transform .8s var(--ease)}
+.eyegrid figure:hover img{transform:scale(1.045)}
+.eyegrid figure:first-child{grid-column:1/-1}
+
+/* ══════════ 첫 화면 팝업 ══════════ */
+.pw{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;
+  background:rgba(6,12,24,.82);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);padding:18px 12px}
+.pw.on{display:flex;animation:pwF .3s ease both}
+@keyframes pwF{from{opacity:0}to{opacity:1}}
+.pw-in{width:100%;max-width:430px;max-height:calc(100dvh - 36px);overflow-y:auto;
+  background:var(--ink);border-radius:18px;padding:8px;
+  box-shadow:0 34px 80px -26px rgba(0,0,0,.7);
+  animation:pwU .4s cubic-bezier(.2,.8,.3,1) both}
+@keyframes pwU{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.pw-body{background:linear-gradient(170deg,#12203A 0%,#0B1526 62%);border-radius:12px;padding:26px 20px 20px;position:relative}
+.pw-x{position:absolute;top:10px;right:10px;width:36px;height:36px;display:grid;place-items:center;
+  background:none;border:0;color:#93A6BE;font-size:19px;cursor:pointer;border-radius:50%;
+  transition:background-color .2s,color .2s}
+.pw-x:hover{background:rgba(255,255,255,.1);color:#fff}
+.pw-eb{text-align:center;font-family:Antonio,sans-serif;font-size:11.5px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase}
+.pw-h{margin-top:12px;text-align:center;font-size:27px;font-weight:800;letter-spacing:-.045em;color:#fff;line-height:1.28}
+.pw-h em{font-style:normal;color:var(--gold-hi)}
+.pw-list{margin-top:20px;display:grid;gap:9px}
+.pw-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(201,163,101,.24);border-radius:11px;padding:13px 14px}
+.pw-row b{flex:0 0 62px;font-family:Antonio,sans-serif;font-size:19px;color:var(--gold-hi);letter-spacing:.02em;line-height:1.1}
+.pw-row b small{display:block;font-size:10px;letter-spacing:.14em;color:#8FA3BC;font-weight:400;margin-top:3px}
+.pw-row span{font-size:14px;font-weight:700;color:#E4ECF6;letter-spacing:-.03em}
+.pw-tip{margin-top:16px;display:flex;align-items:center;gap:9px;background:var(--gold);border-radius:11px;padding:13px 14px;
+  font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.03em}
+.pw-tip svg{flex:0 0 18px}
+.pw-btns{margin-top:11px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pw-b{display:flex;align-items:center;justify-content:center;gap:7px;padding:14px 8px;border-radius:11px;
+  border:1px solid transparent;cursor:pointer;font-size:14.5px;font-weight:800;letter-spacing:-.03em;
+  text-decoration:none;font-family:'Pretendard Variable',Pretendard,sans-serif;
+  transition:background-color .22s,color .22s,border-color .22s,transform .14s}
+.pw-b1{border-color:rgba(255,255,255,.36);color:#fff}
+.pw-b1:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.pw-b2{background:var(--gold);color:var(--ink)}
+.pw-b2:hover{background:var(--gold-hi)}
+.pw-b:active{transform:translateY(1px)}
+.pw-ft{margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border-top:1px solid rgba(255,255,255,.12);padding-top:11px}
+.pw-today{display:flex;align-items:center;gap:7px;font-size:12.5px;color:#8FA3BC;cursor:pointer;user-select:none}
+.pw-today input{width:15px;height:15px;accent-color:var(--gold);cursor:pointer}
+.pw-close{background:none;border:0;cursor:pointer;font-size:12.5px;color:#8FA3BC;text-decoration:underline;
+  text-underline-offset:2px;font-family:inherit}
+.pw-close:hover{color:#fff}
+@media(max-width:420px){
+  .pw-body{padding:24px 15px 16px}
+  .pw-h{font-size:24px}
+  .pw-row b{flex-basis:56px;font-size:17px}
+  .pw-row span{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.pw.on,.pw-in{animation:none}}
+
+/* 예약 강조 배너 */
+.noqueue{display:flex;align-items:center;gap:11px;margin-top:16px;padding:15px 17px;
+  background:var(--ink);border-left:3px solid var(--gold);color:#E4ECF6;
+  font-size:14.5px;font-weight:700;letter-spacing:-.03em;line-height:1.5}
+.noqueue em{font-style:normal;color:var(--gold-hi)}
 </style>
 </head>
 <body>
@@ -566,6 +658,8 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
       <a href="#p-brand"     data-go="p-brand">브랜드</a>
       <a href="#p-premium"   data-go="p-premium">프리미엄</a>
       <a href="#p-location"  data-go="p-location">입지환경</a>
+      <a href="#p-complex"   data-go="p-complex">단지안내</a>
+      <a href="#p-unit"      data-go="p-unit">평면안내</a>
       <a href="#p-community" data-go="p-community">커뮤니티</a>
       <a href="#p-guide"     data-go="p-guide">분양안내</a>
       <a href="#p-contact"   data-go="p-contact">방문예약</a>
@@ -579,9 +673,11 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
   <a href="#p-brand"><i>01</i>브랜드</a>
   <a href="#p-premium"><i>02</i>프리미엄</a>
   <a href="#p-location"><i>03</i>입지환경</a>
-  <a href="#p-community"><i>04</i>커뮤니티</a>
-  <a href="#p-guide"><i>05</i>분양안내</a>
-  <a href="#p-contact"><i>06</i>방문예약</a>
+  <a href="#p-complex"><i>04</i>단지안내</a>
+  <a href="#p-unit"><i>05</i>평면안내</a>
+  <a href="#p-community"><i>06</i>커뮤니티</a>
+  <a href="#p-guide"><i>07</i>분양안내</a>
+  <a href="#p-contact"><i>08</i>방문예약</a>
   <a href="tel:1555-1087" style="border-bottom:0;margin-top:14px;color:var(--gold-hi)"><i>TEL</i><span class="num">1555-1087</span></a>
 </nav>
 
@@ -837,6 +933,224 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
   </section>
 </div>
 
+
+<!-- ═══════════════ 단지안내 ═══════════════ -->
+<div class="page" id="p-complex">
+  <section class="sect" aria-labelledby="h-complex">
+    <div class="wrap">
+      <div class="sect-hd reveal">
+        <p class="eyebrow">Site Plan</p>
+        <h2 id="h-complex">단지 배치</h2>
+        <p>101동 ~ 107동, 최고 49층 7개 동. 7호선 상동역 1번 출구와 맞닿은 자리입니다.</p>
+      </div>
+
+      <figure class="plan-fig reveal" data-lb="./images/sangdong/plan/site-plan-1.jpg">
+        <img src="./images/sangdong/plan/site-plan-1.jpg" alt="상동역 롯데캐슬 시그니처 단지 배치도 — 101동부터 107동까지 동별 배치와 타입별 세대수, 커뮤니티센터·게스트하우스·어린이공원 위치" loading="lazy" width="1160" height="1104">
+        <figcaption>단지 배치도 · 타입별 색상 범례 포함 <span class="zoomhint">클릭하면 확대</span></figcaption>
+      </figure>
+
+      <figure class="plan-fig reveal" data-lb="./images/sangdong/plan/site-plan-2.jpg">
+        <img src="./images/sangdong/plan/site-plan-2.jpg" alt="상동역 롯데캐슬 시그니처 동·호수 배치도" loading="lazy" width="1160" height="1726">
+        <figcaption>동 &middot; 호수 배치도 <span class="zoomhint">클릭하면 확대</span></figcaption>
+      </figure>
+
+      <div class="sect-hd reveal" style="margin-top:clamp(56px,7vw,90px)">
+        <p class="eyebrow">Eye View</p>
+        <h2>조감도 &middot; 투시도</h2>
+        <p>단지 전경과 주요 공간을 미리 살펴보세요.</p>
+      </div>
+      <div class="eyegrid reveal">
+        <figure data-lb="./images/sangdong/plan/eye-1.jpg"><img src="./images/sangdong/plan/eye-1.jpg" alt="상동역 롯데캐슬 시그니처 단지 조감도" loading="lazy" width="1160" height="640"></figure>
+        <figure data-lb="./images/sangdong/plan/eye-2.jpg"><img src="./images/sangdong/plan/eye-2.jpg" alt="상동역 롯데캐슬 시그니처 투시도 1" loading="lazy" width="1160" height="640"></figure>
+        <figure data-lb="./images/sangdong/plan/eye-3.jpg"><img src="./images/sangdong/plan/eye-3.jpg" alt="상동역 롯데캐슬 시그니처 단지 입구와 조경 투시도" loading="lazy" width="1160" height="640"></figure>
+        <figure data-lb="./images/sangdong/plan/eye-4.jpg"><img src="./images/sangdong/plan/eye-4.jpg" alt="상동역 롯데캐슬 시그니처 투시도 3" loading="lazy" width="1160" height="640"></figure>
+        <figure data-lb="./images/sangdong/plan/eye-5.jpg"><img src="./images/sangdong/plan/eye-5.jpg" alt="상동역 롯데캐슬 시그니처 투시도 4" loading="lazy" width="1160" height="640"></figure>
+      </div>
+
+      <p class="reveal" style="margin-top:32px;font-size:12.5px;color:var(--text-2);line-height:1.8">
+        ※ 배치도 · 조감도 · 투시도는 소비자의 이해를 돕기 위해 제작된 것으로 실제와 차이가 있으며,
+        인·허가 및 시공 과정에서 변경될 수 있습니다.
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ 평면안내 ═══════════════ -->
+<div class="page" id="p-unit">
+  <section class="sect tint" aria-labelledby="h-unit">
+    <div class="wrap">
+      <div class="sect-hd reveal">
+        <p class="eyebrow">Unit Plan</p>
+        <h2 id="h-unit">평면 안내</h2>
+        <p>전용 84㎡ 6개 타입과 113㎡ 2개 타입, 121㎡까지 아홉 가지 평면입니다.</p>
+      </div>
+      <div class="utabs reveal" role="tablist" aria-label="주택형 선택">
+        <button class="utab" type="button" role="tab" id="ut-84a" aria-controls="up-84a" aria-selected="true">84A</button>
+        <button class="utab" type="button" role="tab" id="ut-84b" aria-controls="up-84b" aria-selected="false">84B</button>
+        <button class="utab" type="button" role="tab" id="ut-84c" aria-controls="up-84c" aria-selected="false">84C</button>
+        <button class="utab" type="button" role="tab" id="ut-84d" aria-controls="up-84d" aria-selected="false">84D</button>
+        <button class="utab" type="button" role="tab" id="ut-84e" aria-controls="up-84e" aria-selected="false">84E</button>
+        <button class="utab" type="button" role="tab" id="ut-84f" aria-controls="up-84f" aria-selected="false">84F</button>
+        <button class="utab" type="button" role="tab" id="ut-113a" aria-controls="up-113a" aria-selected="false">113A</button>
+        <button class="utab" type="button" role="tab" id="ut-113b" aria-controls="up-113b" aria-selected="false">113B</button>
+        <button class="utab" type="button" role="tab" id="ut-121" aria-controls="up-121" aria-selected="false">121</button>
+        </div>
+      <div class="reveal">
+        <div class="upanel on" role="tabpanel" id="up-84a" aria-labelledby="ut-84a">
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-84a.jpg">
+          <img src="./images/sangdong/plan/unit-84a.jpg" alt="상동역 롯데캐슬 시그니처 84A 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>84A TYPE</h3>
+          <p class="sub">총 224세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>84.9199㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>32.5031㎡</dd></div>
+            <div><dt>공급면적</dt><dd>117.4230㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>67.2470㎡</dd></div>
+            <div><dt>계약면적</dt><dd>184.6700㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-84b" aria-labelledby="ut-84b" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-84b.jpg">
+          <img src="./images/sangdong/plan/unit-84b.jpg" alt="상동역 롯데캐슬 시그니처 84B 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>84B TYPE</h3>
+          <p class="sub">총 84세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>84.7123㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>34.2420㎡</dd></div>
+            <div><dt>공급면적</dt><dd>118.9543㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>67.0826㎡</dd></div>
+            <div><dt>계약면적</dt><dd>186.0369㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-84c" aria-labelledby="ut-84c" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-84c.jpg">
+          <img src="./images/sangdong/plan/unit-84c.jpg" alt="상동역 롯데캐슬 시그니처 84C 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>84C TYPE</h3>
+          <p class="sub">총 353세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>84.9874㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>30.9904㎡</dd></div>
+            <div><dt>공급면적</dt><dd>115.9778㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>67.3004㎡</dd></div>
+            <div><dt>계약면적</dt><dd>183.2782㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-84d" aria-labelledby="ut-84d" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-84d.jpg">
+          <img src="./images/sangdong/plan/unit-84d.jpg" alt="상동역 롯데캐슬 시그니처 84D 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>84D TYPE</h3>
+          <p class="sub">총 89세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>84.9074㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>30.9718㎡</dd></div>
+            <div><dt>공급면적</dt><dd>115.8792㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>67.2371㎡</dd></div>
+            <div><dt>계약면적</dt><dd>183.1163㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-84e" aria-labelledby="ut-84e" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-84e.jpg">
+          <img src="./images/sangdong/plan/unit-84e.jpg" alt="상동역 롯데캐슬 시그니처 84E 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>84E TYPE</h3>
+          <p class="sub">총 178세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>84.9872㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>31.4961㎡</dd></div>
+            <div><dt>공급면적</dt><dd>116.4833㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>67.3003㎡</dd></div>
+            <div><dt>계약면적</dt><dd>183.7836㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-84f" aria-labelledby="ut-84f" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-84f.jpg">
+          <img src="./images/sangdong/plan/unit-84f.jpg" alt="상동역 롯데캐슬 시그니처 84F 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>84F TYPE</h3>
+          <p class="sub">총 442세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>84.9928㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>31.8439㎡</dd></div>
+            <div><dt>공급면적</dt><dd>116.8367㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>67.3047㎡</dd></div>
+            <div><dt>계약면적</dt><dd>184.1414㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-113a" aria-labelledby="ut-113a" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-113a.jpg">
+          <img src="./images/sangdong/plan/unit-113a.jpg" alt="상동역 롯데캐슬 시그니처 113A 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>113A TYPE</h3>
+          <p class="sub">총 224세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>113.0966㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>41.7523㎡</dd></div>
+            <div><dt>공급면적</dt><dd>154.8489㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>89.5598㎡</dd></div>
+            <div><dt>계약면적</dt><dd>244.4087㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-113b" aria-labelledby="ut-113b" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-113b.jpg">
+          <img src="./images/sangdong/plan/unit-113b.jpg" alt="상동역 롯데캐슬 시그니처 113B 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>113B TYPE</h3>
+          <p class="sub">총 84세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>113.0705㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>42.6914㎡</dd></div>
+            <div><dt>공급면적</dt><dd>155.7619㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>89.5391㎡</dd></div>
+            <div><dt>계약면적</dt><dd>245.3010㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="upanel" role="tabpanel" id="up-121" aria-labelledby="ut-121" hidden>
+        <figure class="uimg" data-lb="./images/sangdong/plan/unit-121.jpg">
+          <img src="./images/sangdong/plan/unit-121.jpg" alt="상동역 롯데캐슬 시그니처 121 타입 평면도 (확장형)" loading="lazy">
+        </figure>
+        <div class="uspec">
+          <h3>121 TYPE</h3>
+          <p class="sub">총 178세대 · 전 세대 일반분양</p>
+          <dl>
+            <div><dt>전용면적</dt><dd>121.5813㎡</dd></div>
+            <div><dt>주거공용면적</dt><dd>45.4159㎡</dd></div>
+            <div><dt>공급면적</dt><dd>166.9972㎡</dd></div>
+            <div><dt>기타공용면적</dt><dd>96.2788㎡</dd></div>
+            <div><dt>계약면적</dt><dd>263.2760㎡</dd></div>
+          </dl>
+        </div>
+      </div>
+      </div>
+      <p class="reveal" style="margin-top:30px;font-size:12.5px;color:var(--text-2);line-height:1.8">
+        ※ 상기 평면도는 소비자의 개략적인 이해를 돕기 위한 것으로 <strong>발코니 확장형</strong> 기준이며,
+        평면 · 면적 · 마감재는 실제 공사 시 다소 변경될 수 있습니다.<br>
+        ※ 일부 세대는 대칭형으로 시공되며 호수별 조망과 일조에 차이가 있으니 계약 시 반드시 확인하시기 바랍니다.<br>
+        ※ 펜트하우스(153P · 187P · 192P) 각 1세대는 별도 문의해 주세요.
+      </p>
+    </div>
+  </section>
+</div>
+
 <!-- ═══════════════ 04. 커뮤니티 ═══════════════ -->
 <div class="page" id="p-community">
   <section class="sect dark on-dark" aria-labelledby="h-comm">
@@ -955,7 +1269,12 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
             <tr><th scope="row">사업형태</th><td>개발사업</td></tr>
             <tr><th scope="row">시공사</th><td>롯데건설</td></tr>
             <tr><th scope="row">시행사</th><td>주식회사 미래도시</td></tr>
-            <tr><th scope="row">분양시기</th><td><span class="t-num">2026</span>년 <span class="t-num">8</span>월 (입주자모집공고 기준)</td></tr>
+            <tr><th scope="row">분양일정</th><td>
+              견본주택 오픈 <span class="t-num">8.14</span>(금) &middot; 특별공급 <span class="t-num">8.24</span>(월) &middot;
+              1순위 <span class="t-num">8.25</span>(화) &middot; 2순위 <span class="t-num">8.26</span>(수)<br>
+              당첨자 발표 <span class="t-num">9.1</span>(화) &middot; 서류접수 <span class="t-num">9.3</span>~<span class="t-num">9.12</span> &middot;
+              정당계약 <span class="t-num">9.14</span>~<span class="t-num">9.17</span>
+            </td></tr>
             <tr><th scope="row">분양가 · 계약조건</th><td>입주자모집공고 기준으로 안내드립니다. 상담 시 확인해 주세요.</td></tr>
           </tbody>
         </table>
@@ -1017,6 +1336,10 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
         <form class="form reveal" id="bookForm" novalidate>
           <h3>방문예약 신청</h3>
           <p>남겨주신 정보는 상담 목적으로만 사용됩니다.</p>
+          <div class="noqueue">
+            <span aria-hidden="true">✓</span>
+            <span>예약하고 방문하시면 <em>대기 없이 바로 입장</em>하실 수 있습니다.</span>
+          </div>
 
           <div class="fields">
             <div class="f2">
@@ -1044,6 +1367,19 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
               <div>
                 <label for="f-date">방문 희망일</label>
                 <input type="date" id="f-date" name="visit_date">
+              </div>
+            </div>
+            <div class="f2">
+              <div>
+                <label for="f-time">방문 희망 시간</label>
+                <select id="f-time" name="visit_time">
+                  <option value="">시간 선택</option>
+                  <option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option>
+                </select>
+              </div>
+              <div>
+                <label for="f-birth">생년월일</label>
+                <input type="text" id="f-birth" name="birth" placeholder="예) 1985-03-17" inputmode="numeric" maxlength="10" autocomplete="bday">
               </div>
             </div>
             <div>
@@ -1208,7 +1544,7 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
   onScrollHdr();
 
   /* ── 페이지 전환 (PC) ── */
-  var PAGES = ['p-brand','p-premium','p-location','p-community','p-guide','p-contact'];
+  var PAGES = ['p-brand','p-premium','p-location','p-complex','p-unit','p-community','p-guide','p-contact'];
   function applyMode(){
     document.body.classList.toggle('pc', PC.matches);
     if (!PC.matches) $$('.page').forEach(function(p){ p.classList.add('active'); });
@@ -1231,6 +1567,8 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
     }
     return true;
   }
+  window.__goPage = go;
+
   document.addEventListener('click', function(e){
     var a = e.target.closest('a[href^="#p-"]');
     if (!a) return;
@@ -1379,6 +1717,15 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
     phone.value = v;
   });
 
+  /* ── 생년월일 자동 하이픈 ── */
+  var birthEl = $('#f-birth');
+  if (birthEl) birthEl.addEventListener('input', function(){
+    var v = birthEl.value.replace(/\D/g,'').slice(0,8);
+    if (v.length > 6)      v = v.slice(0,4)+'-'+v.slice(4,6)+'-'+v.slice(6);
+    else if (v.length > 4) v = v.slice(0,4)+'-'+v.slice(4);
+    birthEl.value = v;
+  });
+
   /* ── 폼 제출 ── */
   var form = $('#bookForm'), btn = $('#submitBtn'), msg = $('#formMsg');
   form.addEventListener('submit', function(e){
@@ -1389,13 +1736,19 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
     var ph    = $('#f-phone').value.trim();
     var unit  = $('#f-unit').value;
     var date  = $('#f-date').value;
+    var time  = $('#f-time').value;
+    var birth = $('#f-birth').value.trim();
     var note  = $('#f-msg').value.trim();
 
     if (!name){ msg.className='form-msg err'; msg.textContent='성함을 입력해 주세요.'; $('#f-name').focus(); return; }
     if (ph.replace(/\D/g,'').length < 10){ msg.className='form-msg err'; msg.textContent='연락처를 정확히 입력해 주세요.'; phone.focus(); return; }
     if (!$('#f-agree').checked){ msg.className='form-msg err'; msg.textContent='개인정보 수집·이용에 동의해 주세요.'; $('#f-agree').focus(); return; }
 
-    var message = (date ? '[방문 희망일] ' + date + '\n' : '') + (note || '');
+    var lines = [];
+    if (birth) lines.push('[생년월일] ' + birth);
+    if (date)  lines.push('[방문 희망일] ' + date + (time ? ' ' + time : ''));
+    if (note)  lines.push(note);
+    var message = lines.join('\n');
 
     btn.disabled = true; btn.textContent = '접수 중…';
     fetch('/api/consult', {
@@ -1416,6 +1769,115 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
     })
     .finally(function(){
       btn.disabled = false; btn.textContent = '방문예약 신청하기';
+    });
+  });
+})();
+</script>
+
+
+<!-- ══ 첫 화면 팝업 ══ -->
+<div class="pw" id="pw" role="dialog" aria-modal="true" aria-labelledby="pwH" hidden>
+  <div class="pw-in" id="pwIn" tabindex="-1">
+    <div class="pw-body">
+      <button class="pw-x" type="button" id="pwX" aria-label="팝업 닫기">&#10005;</button>
+      <p class="pw-eb">Sangdong Lotte Castle</p>
+      <h2 class="pw-h" id="pwH">견본주택 <em>오픈</em><br>청약 일정 안내</h2>
+
+      <div class="pw-list">
+        <div class="pw-row"><b>8.14<small>FRI</small></b><span>견본주택 그랜드 오픈</span></div>
+        <div class="pw-row"><b>8.24<small>MON</small></b><span>특별공급</span></div>
+        <div class="pw-row"><b>8.25<small>TUE</small></b><span>1순위 청약</span></div>
+        <div class="pw-row"><b>8.26<small>WED</small></b><span>2순위 청약</span></div>
+        <div class="pw-row"><b>9.1<small>TUE</small></b><span>당첨자 발표</span></div>
+      </div>
+
+      <p class="pw-tip">
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10 1a9 9 0 100 18 9 9 0 000-18zm4.3 6.6l-5 6a1 1 0 01-1.5.06L5.4 11.3a1 1 0 111.4-1.4l1.6 1.6 4.3-5.2a1 1 0 011.6 1.3z"/></svg>
+        예약하시면 대기 없이 바로 입장
+      </p>
+
+      <div class="pw-btns">
+        <a class="pw-b pw-b1" href="tel:1555-1087" id="pwTel">전화상담</a>
+        <button class="pw-b pw-b2" type="button" id="pwBook">방문예약</button>
+      </div>
+
+      <div class="pw-ft">
+        <label class="pw-today"><input type="checkbox" id="pwToday">오늘 하루 열지 않기</label>
+        <button class="pw-close" type="button" id="pwClose">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='sangdong_popup_hide_until', pw=document.getElementById('pw');
+  if(!pw) return;
+  var box=document.getElementById('pwIn'), last=null;
+
+  function hidden(){ try{ return Date.now() < (parseInt(localStorage.getItem(KEY),10)||0); }catch(e){ return false; } }
+  function open(){
+    last=document.activeElement;
+    pw.hidden=false; pw.classList.add('on');
+    document.body.style.overflow='hidden';
+    box.focus();
+  }
+  function close(){
+    if(document.getElementById('pwToday').checked){
+      try{ localStorage.setItem(KEY, String(Date.now()+864e5)); }catch(e){}
+    }
+    pw.classList.remove('on'); pw.hidden=true;
+    document.body.style.overflow='';
+    if(last && last.focus) last.focus();
+  }
+  document.getElementById('pwX').addEventListener('click', close);
+  document.getElementById('pwClose').addEventListener('click', close);
+  pw.addEventListener('click', function(e){ if(e.target===pw) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && pw.classList.contains('on')) close();
+  });
+  document.getElementById('pwTel').addEventListener('click', function(){ setTimeout(close,60); });
+  document.getElementById('pwBook').addEventListener('click', function(){
+    close();
+    if(window.__goPage) window.__goPage('p-contact','consult-form');
+    var el=document.getElementById('p-contact');
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  /* 포커스를 팝업 안에 가둔다 */
+  box.addEventListener('keydown', function(e){
+    if(e.key!=='Tab') return;
+    var f=box.querySelectorAll('button, a[href], input');
+    if(!f.length) return;
+    var first=f[0], lastEl=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); lastEl.focus(); }
+    else if(!e.shiftKey && document.activeElement===lastEl){ e.preventDefault(); first.focus(); }
+  });
+
+  if(!hidden()) setTimeout(open, 900);
+})();
+
+/* ── 평면 탭 ── */
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.utab'));
+  if(!tabs.length) return;
+  function pick(tab){
+    tabs.forEach(function(t){
+      var on = (t === tab);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var pn = document.getElementById(t.getAttribute('aria-controls'));
+      if(!pn) return;
+      pn.classList.toggle('on', on);
+      if(on) pn.removeAttribute('hidden'); else pn.setAttribute('hidden','');
+    });
+  }
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ pick(tab); });
+    tab.addEventListener('keydown', function(e){
+      var nx=null;
+      if(e.key==='ArrowRight') nx=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowLeft')  nx=tabs[(i-1+tabs.length)%tabs.length];
+      if(nx){ e.preventDefault(); nx.focus(); pick(nx); }
     });
   });
 })();
