@@ -2,6 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<!-- 토스애즈 픽셀 (async·defer 금지) -->
+<script type="text/javascript" charset="UTF-8" src="https://static.toss.im/lex/v1.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>상동역 롯데캐슬 시그니처 | 부천 상동 7호선 초역세권 49층 1,859세대 분양</title>
@@ -1931,6 +1933,14 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
     })
     .then(function(r){ if (!r.ok) throw new Error('fail'); return r.json(); })
     .then(function(){
+      /* 토스 전환(lead): 저장에 성공했을 때만 보낸다 */
+      try{
+        var evId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+                 : 'LEAD-' + Date.now() + '-' + Math.random().toString(36).slice(2,10);
+        if (typeof TossPixel === 'function'){
+          TossPixel('2382883081870412525').lead({ event_id: evId, lead_type:'Consultation', custom_param1:'상동역롯데캐슬시그니처' });
+        }
+      }catch(_px){}
       /* 네이버 전환(lead): 공통키가 들어 있을 때만 */
       try{
         if (window.NAVER_WA && window.wcs && typeof wcs.trans === 'function'){
