@@ -1919,7 +1919,7 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
     var note  = $('#f-msg').value.trim();
 
     if (!name){ msg.className='form-msg err'; msg.textContent='성함을 입력해 주세요.'; $('#f-name').focus(); return; }
-    if (ph.replace(/\D/g,'').length < 10){ msg.className='form-msg err'; msg.textContent='연락처를 정확히 입력해 주세요.'; phone.focus(); return; }
+    if (ph.replace(/\D/g,'').length < 10){ msg.className='form-msg err'; msg.textContent='연락처를 정확히 입력해 주세요.'; $('#f-phone').focus(); return; }
     if (!$('#f-agree').checked){ msg.className='form-msg err'; msg.textContent='개인정보 수집·이용에 동의해 주세요.'; $('#f-agree').focus(); return; }
 
     var lines = [];
