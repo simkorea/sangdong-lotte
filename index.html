@@ -1905,6 +1905,7 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
 
   /* ── 폼 제출 ── */
   var form = $('#bookForm'), btn = $('#submitBtn'), msg = $('#formMsg');
+  var oaiSent = {};   /* OpenAI lead_created 중복 전송 방지 (연락처 기준) */
   form.addEventListener('submit', function(e){
     e.preventDefault();
     msg.className = 'form-msg'; msg.textContent = '';
@@ -1949,6 +1950,14 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
           var _conv = {}; _conv.type = 'lead'; wcs.trans(_conv);
         }
       }catch(_nv){}
+      /* OpenAI Ads 전환(lead_created): 저장 성공 + 같은 연락처는 1회만 */
+      try{
+        var _oaiKey = ph.replace(/\D/g,'');
+        if (!oaiSent[_oaiKey] && typeof window.oaiq === 'function'){
+          oaiSent[_oaiKey] = true;
+          window.oaiq('measure', 'lead_created', { type: 'customer_action' });
+        }
+      }catch(_oai){}
       form.reset();
       $('#privBox').classList.remove('open');
       msg.className = 'form-msg ok';
