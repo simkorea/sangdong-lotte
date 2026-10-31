@@ -336,7 +336,7 @@ address{font-style:normal}
 .vid-shot{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;background:#0B1526}
 .vid img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),opacity .4s var(--ease);opacity:.88}
 .vid:hover img{transform:scale(1.055);opacity:1}
-.vid figcaption{margin-top:13px;color:var(--text);font-size:14.5px;font-weight:600;letter-spacing:-.025em;line-height:1.5}
+.vid .vid-cap{display:block;margin-top:13px;color:var(--text);font-size:14.5px;font-weight:600;letter-spacing:-.025em;line-height:1.5}
 .vid-play{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:56px;height:56px;border:1px solid rgba(255,255,255,.7);border-radius:50%;
@@ -851,41 +851,41 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
         <p>롯데건설이 제작한 공식 홍보영상 5편입니다. 클릭하면 유튜브에서 바로 재생됩니다.</p>
       </div>
       <div class="vid-grid" id="vidGrid">
-        <figure class="vid reveal" role="button" tabindex="0" data-yt="ZunV4wQGPHI" aria-label="영상 재생: 서울을 더 가깝게 누리는 여유의 거리">
+        <button type="button" class="vid reveal" data-yt="ZunV4wQGPHI">
           <span class="vid-shot">
             <img src="./images/sangdong/yt-ZunV4wQGPHI.jpg" alt="홍보영상 교통편 — 서울을 더 가깝게 누리는 여유의 거리" loading="lazy" width="800" height="450">
             <span class="vid-play" aria-hidden="true"></span>
           </span>
-          <figcaption>서울을 더 가깝게 누리는 여유의 거리</figcaption>
-        </figure>
-        <figure class="vid reveal" style="--d:80ms" role="button" tabindex="0" data-yt="36hkm8w3-mo" aria-label="영상 재생: 집 앞에서 즐기는 다채로운 일상">
+          <span class="vid-cap">서울을 더 가깝게 누리는 여유의 거리</span>
+        </button>
+        <button type="button" class="vid reveal" style="--d:80ms" data-yt="36hkm8w3-mo">
           <span class="vid-shot">
             <img src="./images/sangdong/yt-36hkm8w3-mo.jpg" alt="홍보영상 인프라편 — 집 앞에서 즐기는 다채로운 일상" loading="lazy" width="800" height="450">
             <span class="vid-play" aria-hidden="true"></span>
           </span>
-          <figcaption>집 앞에서 즐기는 다채로운 일상</figcaption>
-        </figure>
-        <figure class="vid reveal" style="--d:160ms" role="button" tabindex="0" data-yt="aMkkZVdl_74" aria-label="영상 재생: 배움이 한 걸음 더 가까운 이 곳">
+          <span class="vid-cap">집 앞에서 즐기는 다채로운 일상</span>
+        </button>
+        <button type="button" class="vid reveal" style="--d:160ms" data-yt="aMkkZVdl_74">
           <span class="vid-shot">
             <img src="./images/sangdong/yt-aMkkZVdl_74.jpg" alt="홍보영상 교육편 — 배움이 한 걸음 더 가까운 이 곳" loading="lazy" width="800" height="450">
             <span class="vid-play" aria-hidden="true"></span>
           </span>
-          <figcaption>배움이 한 걸음 더 가까운 이 곳</figcaption>
-        </figure>
-        <figure class="vid reveal" role="button" tabindex="0" data-yt="S3H3GB3YP3k" aria-label="영상 재생: 변화의 중심에 선 프리미엄">
+          <span class="vid-cap">배움이 한 걸음 더 가까운 이 곳</span>
+        </button>
+        <button type="button" class="vid reveal" data-yt="S3H3GB3YP3k">
           <span class="vid-shot">
             <img src="./images/sangdong/yt-S3H3GB3YP3k.jpg" alt="홍보영상 미래가치편 — 변화의 중심에 선 프리미엄" loading="lazy" width="800" height="450">
             <span class="vid-play" aria-hidden="true"></span>
           </span>
-          <figcaption>변화의 중심에 선 프리미엄</figcaption>
-        </figure>
-        <figure class="vid reveal" style="--d:80ms" role="button" tabindex="0" data-yt="9ObvEO8Q0AY" aria-label="영상 재생: 부천을 대표할 새로운 랜드마크">
+          <span class="vid-cap">변화의 중심에 선 프리미엄</span>
+        </button>
+        <button type="button" class="vid reveal" style="--d:80ms" data-yt="9ObvEO8Q0AY">
           <span class="vid-shot">
             <img src="./images/sangdong/yt-9ObvEO8Q0AY.jpg" alt="홍보영상 랜드마크편 — 부천을 대표할 새로운 랜드마크" loading="lazy" width="800" height="450">
             <span class="vid-play" aria-hidden="true"></span>
           </span>
-          <figcaption>부천을 대표할 새로운 랜드마크</figcaption>
-        </figure>
+          <span class="vid-cap">부천을 대표할 새로운 랜드마크</span>
+        </button>
       </div>
     </div>
   </section>
@@ -1843,16 +1843,13 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
     fig.dataset.played = '1';
     var f = document.createElement('iframe');
     f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-    f.title = fig.getAttribute('aria-label') || '홍보영상';
+    f.title = (fig.querySelector('.vid-cap') || {}).textContent || '홍보영상';
     f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     (fig.querySelector('.vid-shot') || fig).appendChild(f);
   }
   $$('.vid').forEach(function(fig){
     fig.addEventListener('click', function(){ playVideo(fig); });
-    fig.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); playVideo(fig); }
-    });
   });
 
   /* ── 라이트박스 ── */
