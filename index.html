@@ -533,6 +533,11 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
 .mbar .m-book:active{background:var(--gold-hi)}
 
 /* ══════════ 16. 라이트박스 ══════════ */
+[data-lb]{position:relative}
+.lb-hit{
+  position:absolute;inset:0;z-index:2;display:block;width:100%;
+  margin:0;padding:0;border:0;background:none;cursor:zoom-in;
+}
 .lb{position:fixed;inset:0;z-index:200;background:rgba(7,14,26,.95);display:none;align-items:center;justify-content:center;padding:20px;overscroll-behavior:contain}
 .lb.open{display:flex}
 .lb img{max-width:100%;max-height:92vh;object-fit:contain}
@@ -1866,10 +1871,22 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
   }
   $$('[data-lb]').forEach(function(el){
     function fire(){ var img = el.querySelector('img'); openLb(el.dataset.lb, img ? img.alt : ''); }
-    el.addEventListener('click', fire);
-    el.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fire(); }
-    });
+    /* 이미 버튼 역할이면 그대로 — 버튼 안에 버튼을 넣을 수 없다 */
+    if (el.tagName === 'BUTTON' || el.getAttribute('role') === 'button'){
+      el.addEventListener('click', fire);
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fire(); }
+      });
+      return;
+    }
+    /* 그 외에는 투명한 진짜 버튼을 덮어 키보드로도 열리게 한다 */
+    var img = el.querySelector('img');
+    var hit = document.createElement('button');
+    hit.type = 'button';
+    hit.className = 'lb-hit';
+    hit.setAttribute('aria-label', (img && img.alt ? img.alt : '이미지') + ' 크게 보기');
+    hit.addEventListener('click', fire);
+    el.appendChild(hit);
   });
   $('#lbX').addEventListener('click', closeLb);
   lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
