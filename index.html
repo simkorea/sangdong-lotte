@@ -376,7 +376,7 @@ address{font-style:normal}
 .prem:hover .prem-body .prem-idx{color:var(--gold)}
 
 /* ══════════ 10. 입지 ══════════ */
-.map-frame{position:relative;background:#fff;border:1px solid var(--rule);padding:clamp(10px,2vw,22px);cursor:zoom-in}
+.map-frame{position:relative;display:block;width:100%;text-align:left;font:inherit;color:inherit;background:#fff;border:1px solid var(--rule);padding:clamp(10px,2vw,22px);cursor:zoom-in}
 .map-frame img{width:100%}
 .map-frame .zoom{
   position:absolute;right:14px;top:14px;background:rgba(11,21,38,.86);color:#fff;
@@ -989,10 +989,10 @@ input::placeholder,textarea::placeholder{color:#A7B0BD}
         <p>7호선 상동역 1번출구 앞. 부천시청과 상동 메가 상권, 명문 학군을 모두 걸어서 누리는 자리입니다.</p>
       </div>
 
-      <figure class="map-frame reveal" data-lb="./images/sangdong/loc-map.jpg" role="button" tabindex="0" aria-label="위치도 크게 보기">
+      <button type="button" class="map-frame reveal" data-lb="./images/sangdong/loc-map.jpg">
         <img src="./images/sangdong/loc-map.jpg" alt="상동역 롯데캐슬 시그니처 위치도 — 7호선 상동역, 부천시청, 상동호수공원, GTX-B·D 부천종합운동장역 예정 노선 표시" loading="lazy" width="1147" height="740">
-        <figcaption class="zoom">클릭하면 크게 보입니다</figcaption>
-      </figure>
+        <span class="zoom">클릭하면 크게 보입니다</span>
+      </button>
 
       <div class="loc-grid">
         <article class="loc-card reveal">
